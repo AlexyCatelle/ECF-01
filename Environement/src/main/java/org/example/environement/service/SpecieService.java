@@ -17,11 +17,9 @@ public class SpecieService {
 
     private final SpecieRepository specieRepository;
 
-    private final SpecieRepositoryPaginate specieRepositoryPaginate;
 
-    public SpecieService(SpecieRepository specieRepository, SpecieRepositoryPaginate specieRepositoryPaginate) {
+    public SpecieService(SpecieRepository specieRepository) {
         this.specieRepository = specieRepository;
-        this.specieRepositoryPaginate = specieRepositoryPaginate;
     }
 
     public SpecieDtoResponse create (SpecieDtoReceive specieDtoReceive){
@@ -29,7 +27,7 @@ public class SpecieService {
     }
 
     public List<SpecieDtoResponse> get (int pageSize, int pageNumber){
-        return specieRepositoryPaginate.findAll(PageRequest.of(pageNumber, pageSize)).stream().map(Specie::entityToDto).collect(Collectors.toList());
+        return specieRepository.findAll(PageRequest.of(pageNumber, pageSize)).stream().map(Specie::entityToDto).collect(Collectors.toList());
     }
 
     public SpecieDtoResponse get(long id){

@@ -15,7 +15,7 @@ import org.example.environement.entity.enums.TravelMode;
 @Builder
 public class Travellog {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private Double distanceKm;

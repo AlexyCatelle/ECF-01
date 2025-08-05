@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Builder
 public class Observation {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private String observerName;
